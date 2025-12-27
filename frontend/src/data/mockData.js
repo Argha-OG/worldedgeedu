@@ -983,3 +983,75 @@ export const courses = [
     { id: 54, name: "Mechanical Engineering", universityId: 71, level: "Bachelor", duration: "4 years", fee: "€150/semester", degreeType: "BSc", discipline: "Engineering" },
     { id: 55, name: "Business Administration", universityId: 76, level: "Bachelor", duration: "4 years", fee: "CAD 50,000/year", degreeType: "BSc", discipline: "Business" },
 ];
+
+export const testimonials = [
+    {
+        id: 1,
+        name: "Sarah Jenkins",
+        university: "University of Melbourne",
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+        quote: "WorldEdge made my dream of studying in Australia a reality. Their guidance on the visa process was invaluable.",
+        rating: 5
+    },
+    {
+        id: 2,
+        name: "Michael Chen",
+        university: "Imperial College London",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+        quote: "The counselors were incredibly supportive and helped me choose the right engineering program. highly recommended!",
+        rating: 5
+    },
+    {
+        id: 3,
+        name: "Priya Patel",
+        university: "University of Toronto",
+        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+        quote: "I was overwhelmed by options, but WorldEdge helped me narrow down to the best fit for my career goals.",
+        rating: 4
+    }
+];
+
+export const teamMembers = [
+    {
+        id: 1,
+        name: "Dr. Emily Carter",
+        role: "Lead Education Consultant",
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    },
+    {
+        id: 2,
+        name: "James Wilson",
+        role: "Senior Visa Expert",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    },
+    {
+        id: 3,
+        name: "Sophia Rodriguez",
+        role: "Student Success Manager",
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    },
+    {
+        id: 4,
+        name: "David Kim",
+        role: "Admissions Specialist",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    }
+];
+
+export const topUniversities = [
+    // Malaysia Private
+    { name: "Taylor's University", logo: "https://upload.wikimedia.org/wikipedia/commons/1/13/Taylor%27s_University_logo.png" },
+    { name: "Sunway University", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Sunway_University_Logo.png/800px-Sunway_University_Logo.png" },
+    { name: "Monash Malaysia", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Monash_University_logo.svg/1200px-Monash_University_logo.svg.png" },
+    { name: "APU Malaysia", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Asia_Pacific_University_of_Technology_and_Innovation.svg/1200px-Asia_Pacific_University_of_Technology_and_Innovation.svg.png" },
+    { name: "UCSI University", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/UCSI_University_logo.png/800px-UCSI_University_logo.png" },
+    // Australia
+    { name: "Univ. of Melbourne", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/The_University_of_Melbourne_logo.svg/1200px-The_University_of_Melbourne_logo.svg.png" },
+    { name: "Univ. of Sydney", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/University_of_Sydney_Logo.svg/1200px-University_of_Sydney_Logo.svg.png" },
+    { name: "UNSW Sydney", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/UNSW_Sydney_Logo.svg/1200px-UNSW_Sydney_Logo.svg.png" },
+    { name: "Univ. of Queensland", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/University_of_Queensland_Logo.svg/1200px-University_of_Queensland_Logo.svg.png" },
+    { name: "Monash Australia", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Monash_University_logo.svg/1200px-Monash_University_logo.svg.png" },
+    // More Malaysia
+    { name: "Nottingham Malaysia", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/9/90/University_of_Nottingham_Coat_of_Arms.svg/800px-University_of_Nottingham_Coat_of_Arms.svg.png" },
+    { name: "Heriot-Watt Malaysia", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Heriot-Watt_University_logo.svg/1200px-Heriot-Watt_University_logo.svg.png" }
+];

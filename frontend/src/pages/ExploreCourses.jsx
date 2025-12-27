@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import GlassCard from '../components/ui/GlassCard';
 import ThreeDButton from '../components/ui/ThreeDButton';
 import { FilterSection, FilterCheckbox } from '../components/ui/FilterSection';
-import { courses, universities } from '../data/mockData';
+import { useData } from '../context/DataContext';
 import { Search, BookOpen, Clock, DollarSign, MapPin, GraduationCap, Building2, X } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEO from '../components/common/SEO';
 
 const ExploreCourses = () => {
+    const { courses, universities } = useData();
     const [filters, setFilters] = useState({
         search: '',
         levels: [],
@@ -85,6 +88,7 @@ const ExploreCourses = () => {
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <SEO title="Explore Courses" description="Find your ideal course from our extensive list of programs. Filter by degree type, location, discipline, and budget." />
             <div className="flex flex-col md:flex-row gap-8">
                 {/* Modern Sidebar Filters */}
                 <aside className="w-full md:w-80 flex-shrink-0">
@@ -252,9 +256,11 @@ const ExploreCourses = () => {
                                     </div>
 
                                     <div className="flex-shrink-0 w-full md:w-auto mt-4 md:mt-0">
-                                        <ThreeDButton className="w-full md:w-auto">
-                                            Apply Now
-                                        </ThreeDButton>
+                                        <Link to={`/courses/${course.id}`}>
+                                            <ThreeDButton className="w-full md:w-auto">
+                                                View Course
+                                            </ThreeDButton>
+                                        </Link>
                                     </div>
                                 </GlassCard>
                             </motion.div>

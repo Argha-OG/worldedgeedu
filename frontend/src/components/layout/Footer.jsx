@@ -48,15 +48,15 @@ const Footer = () => {
                         <ul className="space-y-4">
                             <li className="flex items-start">
                                 <MapPin size={18} className="text-primary mt-0.5 mr-2 flex-shrink-0" />
-                                <span className="text-slate-600 dark:text-slate-400 text-sm">123 Education Lane, Global City, 10001</span>
+                                <span className="text-slate-600 dark:text-slate-400 text-sm">B-6, South City Plaza, Seri Kembangan, Selangor, Malaysia</span>
                             </li>
                             <li className="flex items-center">
                                 <Phone size={18} className="text-primary mr-2 flex-shrink-0" />
-                                <span className="text-slate-600 dark:text-slate-400 text-sm">+1 (555) 123-4567</span>
+                                <span className="text-slate-600 dark:text-slate-400 text-sm">+880 1830-344304</span>
                             </li>
                             <li className="flex items-center">
                                 <Mail size={18} className="text-primary mr-2 flex-shrink-0" />
-                                <span className="text-slate-600 dark:text-slate-400 text-sm">info@worldedgeedu.com</span>
+                                <span className="text-slate-600 dark:text-slate-400 text-sm">team@worldedgeedu.com</span>
                             </li>
                         </ul>
                     </div>

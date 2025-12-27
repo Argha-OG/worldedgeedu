@@ -2,52 +2,66 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '../../lib/utils';
 
-const ThreeDButton = ({ children, className, onClick, variant = "primary", ...props }) => {
+const ThreeDButton = ({ children, className, onClick, variant = "primary", size = "md", ...props }) => {
+
+    // Style configurations
     const variants = {
         primary: {
-            gradient: "bg-gradient-to-r from-primary via-purple-600 to-accent",
-            shadow: "shadow-[0_8px_0_rgb(109,40,217)] hover:shadow-[0_5px_0_rgb(109,40,217)] active:shadow-[0_0px_0_rgb(109,40,217)]",
-            text: "text-white",
+            // Gradient top, Deep solid shadow
+            base: "bg-gradient-to-r from-[#c026d3] to-[#9333ea] text-white", // Pink to Purple
+            shadow: "bg-[#4c1d95]", // Deep dark purple (indigo-900 like)
+            border: "border-t border-white/20",
         },
         secondary: {
-            gradient: "bg-gradient-to-r from-slate-700 to-slate-900 dark:from-slate-600 dark:to-slate-800",
-            shadow: "shadow-[0_8px_0_rgb(51,65,85)] hover:shadow-[0_5px_0_rgb(51,65,85)] active:shadow-[0_0px_0_rgb(51,65,85)]",
-            text: "text-white",
+            // White top, Grey/Subtle shadow
+            base: "bg-white text-slate-900 border border-slate-200",
+            shadow: "bg-slate-300",
+            border: "border-b-4 border-slate-300", // Fallback if 3D layer fails
         },
         outline: {
-            gradient: "bg-white dark:bg-slate-800 border-2 border-primary",
-            shadow: "shadow-[0_6px_0_rgb(109,40,217)] hover:shadow-[0_3px_0_rgb(109,40,217)] active:shadow-[0_0px_0_rgb(109,40,217)]",
-            text: "text-primary dark:text-white",
-        },
+            // Transparent top, Colored border/shadow
+            base: "bg-white border-2 border-[#9333ea] text-[#9333ea]",
+            shadow: "bg-[#9333ea]/20",
+            border: "",
+        }
     };
 
-    const selectedVariant = variants[variant];
+    const sizes = {
+        sm: "h-8 px-4 text-xs min-w-[100px]",
+        md: "h-12 px-8 text-sm min-w-[140px]",
+        lg: "h-14 px-10 text-base min-w-[160px]",
+    };
+
+    const selectedVariant = variants[variant] || variants.primary;
+    const selectedSize = sizes[size] || sizes.md;
 
     return (
         <motion.button
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98, y: 0 }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
+            whileHover={{ y: -4 }}
+            whileTap={{ y: 2 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
             className={cn(
-                "relative px-8 py-3.5 font-bold rounded-xl group overflow-hidden",
-                selectedVariant.gradient,
-                selectedVariant.shadow,
-                selectedVariant.text,
-                "active:translate-y-[8px]",
-                "transition-all duration-150",
-                "hover:brightness-110",
+                "relative group inline-flex isolate",
                 className
             )}
             onClick={onClick}
             {...props}
         >
-            {/* Shine effect */}
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
+            {/* Shadow Layer (The Base) */}
+            <div className={cn(
+                "absolute inset-0 rounded-full translate-y-[8px] w-full h-full -z-10",
+                selectedVariant.shadow
+            )} />
 
-            {/* Content */}
-            <span className="relative z-10 flex items-center justify-center gap-2">
+            {/* Main Button Face */}
+            <div className={cn(
+                "relative flex items-center justify-center font-heading font-bold rounded-full uppercase tracking-wider w-full h-full z-10",
+                selectedVariant.base,
+                selectedVariant.border,
+                selectedSize
+            )}>
                 {children}
-            </span>
+            </div>
         </motion.button>
     );
 };

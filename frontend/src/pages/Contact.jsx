@@ -2,10 +2,14 @@ import React from 'react';
 import GlassCard from '../components/ui/GlassCard';
 import ThreeDButton from '../components/ui/ThreeDButton';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import SEO from '../components/common/SEO';
+import MouseTracker from '../components/ui/MouseTracker';
 
 const Contact = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <SEO title="Contact Us" description="Get in touch with WorldEdge Education. Visit our offices or contact us online for expert guidance on your study abroad journey." />
+            <MouseTracker />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 {/* Contact Info */}
                 <div>
@@ -21,7 +25,7 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h3 className="font-bold text-slate-900 dark:text-white">Phone</h3>
-                                <p className="text-slate-600 dark:text-slate-400">+1 (555) 123-4567</p>
+                                <p className="text-slate-600 dark:text-slate-400">+880 1830-344304</p>
                             </div>
                         </GlassCard>
 
@@ -41,7 +45,7 @@ const Contact = () => {
                             </div>
                             <div>
                                 <h3 className="font-bold text-slate-900 dark:text-white">Office</h3>
-                                <p className="text-slate-600 dark:text-slate-400">123 Education Lane, Global City</p>
+                                <p className="text-slate-600 dark:text-slate-400">B-6, South City Plaza, Seri Kembangan, Selangor, Malaysia</p>
                             </div>
                         </GlassCard>
                     </div>

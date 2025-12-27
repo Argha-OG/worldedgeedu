@@ -1,26 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../../lib/utils';
+import { useTheme } from '../../context/ThemeContext';
 import logo from '../../assets/worldedge.png';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const [theme, setTheme] = useState(() => {
-        if (typeof window !== 'undefined') {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                // Apply theme immediately on load
-                if (savedTheme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                }
-                return savedTheme;
-            }
-        }
-        return 'light';
-    });
+    const { theme, setTheme } = useTheme();
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -30,19 +20,20 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    useEffect(() => {
-        const root = document.documentElement;
-        if (theme === 'dark') {
-            root.classList.add('dark');
-        } else {
-            root.classList.remove('dark');
-        }
-        localStorage.setItem('theme', theme);
-    }, [theme]);
-
     const toggleTheme = () => {
-        setTheme(prev => prev === 'light' ? 'dark' : 'light');
+        setTheme(theme === 'light' ? 'dark' : 'light');
     };
+
+    const getPageTitle = (pathname) => {
+        if (pathname === '/') return '';
+        if (pathname.startsWith('/universities')) return 'Universities';
+        if (pathname.startsWith('/courses')) return 'Courses';
+        if (pathname === '/about') return 'About Us';
+        if (pathname === '/contact') return 'Contact';
+        return '';
+    };
+
+    const pageTitle = getPageTitle(location.pathname);
 
     const navLinks = [
         { name: 'Home', path: '/' },
@@ -56,14 +47,21 @@ const Navbar = () => {
         <nav className={cn(
             "fixed top-0 w-full z-50 transition-all duration-300",
             isScrolled || isOpen
-                ? "bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-md"
-                : "bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm"
+                ? "bg-background/90 backdrop-blur-md shadow-3d border-b border-border"
+                : "bg-background/70 backdrop-blur-sm"
         )}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
-                    <Link to="/" className="flex-shrink-0 h-full py-1.5">
-                        <img src={logo} alt="WorldEdge Education" className="h-full w-auto rounded-xl shadow-lg" />
-                    </Link>
+                    <div className="flex items-center gap-4">
+                        <Link to="/" className="flex-shrink-0 h-16 w-auto ">
+                            <img src={logo} alt="WorldEdge Education" className="rounded-md h-full w-auto" />
+                        </Link>
+                        {pageTitle && (
+                            <div className="hidden md:flex items-center pl-4 border-l-2 border-border h-8">
+                                <span className="text-sm font-bold uppercase tracking-wider text-muted-foreground">{pageTitle}</span>
+                            </div>
+                        )}
+                    </div>
 
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-8">
